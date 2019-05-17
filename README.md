@@ -4,7 +4,7 @@
 
 # First install docker and nvidia-docker2
 ```console
-~$ chmod +x ./install.sh
+~$ chmod +x install.sh
 ~$ ./install.sh
 ```
 
