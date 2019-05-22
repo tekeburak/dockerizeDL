@@ -36,7 +36,7 @@ WARNING! This will remove:
 ```
 ## Inside the docker, run this command to work with jupyter
 ```console
-~$ jupyter lab --ip=0.0.0.0 --port=8888
+~$ jupyter lab --ip=0.0.0.0 --port=8888 --allow-root
 ```
 ## Copy file from local to docker (invoke inside docker env)
 ```console
