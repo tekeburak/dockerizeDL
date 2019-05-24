@@ -2,20 +2,20 @@
 
 ## Get the full ID of container. (sha256)
 ```console
-~$ docker inspect --format="{{.Id}}" deeplearning:latest
+burak@docker:~$ docker inspect --format="{{.Id}}" deeplearning:latest
 ```
 ## Accessing and modifying the container
 ### Where CONTAINER_ID is the ID given to you when you initially ran the container. (~$ docker ps)
 ```console
-~$ sudo docker exec -it CONTAINER_ID bash
+burak@docker:~$ sudo docker exec -it CONTAINER_ID bash
 ```
 ## Commit the changes
 ```console
-~$ sudo docker commit CONTAINER_ID tekeburak/deeplearning:latest
+burak@docker:~$ sudo docker commit CONTAINER_ID tekeburak/deeplearning:latest
 ```
 ## After committing, run the container and then run the following command to clean duplicate containers
 ```console
-~$ docker system prune --all --force --volumes
+burak@docker:~$ docker system prune --all --force --volumes
 ```
 
 ```
@@ -28,17 +28,24 @@ WARNING! This will remove:
 ```
 ## Run docker container with nvidia-docker
 ```console
-~$ sudo docker run --rm --interactive --tty --runtime=nvidia tekeburak/deeplearning:latest /bin/bash
+burak@docker:~$ sudo docker run --rm --interactive --tty --runtime=nvidia tekeburak/deeplearning:latest /bin/bash
 ```
 ## Run docker container for jupyter notebook and link folders
 ```console
-~$ docker run -p 8888:8888 -v ~/burak:/home/burak --rm --interactive --tty --runtime=nvidia tekeburak/deeplearning:latest /bin/bash
+burak@docker:~$ docker run -p 8888:8888 -v ~/burak:/home/burak --rm --interactive --tty --runtime=nvidia tekeburak/deeplearning:latest /bin/bash
 ```
 ## Inside the docker, run this command to work with jupyter
 ```console
-~$ jupyter lab --ip=0.0.0.0 --port=8888 --allow-root
+burak@docker:~$ jupyter lab --ip=0.0.0.0 --port=8888
 ```
 ## Copy file from local to docker (invoke inside docker env)
 ```console
-~$ cp /home/burak/* "$PWD"/docker_folder
+burak@docker:~$ cp /home/burak/* "$PWD"/docker_folder
+```
+## In order to able to run docker commands without sudo
+```console
+burak@docker:~$ sudo groupadd docker
+```
+```console
+burak@docker:~$ sudo usermod -aG docker $USER
 ```
