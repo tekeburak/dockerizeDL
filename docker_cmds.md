@@ -36,7 +36,7 @@ burak@docker:~$ docker run -p 8888:8888 -v ~/burak:/home/burak --rm --interactiv
 ```
 ## Inside the docker, run this command to work with jupyter
 ```console
-burak@docker:~$ jupyter lab --ip=0.0.0.0 --port=8888
+burak@docker:~$ jupyter lab --ip=0.0.0.0 --port=8888 --allow-root
 ```
 ## Copy file from local to docker (invoke inside docker env)
 ```console
