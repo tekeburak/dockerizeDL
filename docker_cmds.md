@@ -33,9 +33,9 @@ burak@ubuntu:~$ sudo docker run --rm --interactive --tty --runtime=nvidia tekebu
 ## Run docker for non-root user
 ### Before running, the following steps should be completed in docker root user.
 ```console
-~# apt install sudo
-~# adduser sammy
-~# usermod -aG sudo sammy
+root:~# apt install sudo
+root:~# adduser sammy
+root:~# usermod -aG sudo sammy
 ```
 ### Open another terminal commit the changes (docker ps to get CONTAINER_ID)
 ```console
@@ -43,7 +43,7 @@ burak@ubuntu:~$ docker commit CONTAINER_ID tekeburak/deeplearning:latest
 ```
 ### Finally run docker for non-root user
 ```console
-docker run --user=burakteke -w=/home/burakteke -v /home/burak/burak_docker:/home/burakteke -p 8888:8888 --rm --interactive --tty --runtime=nvidia tekeburak/deeplearning:latest /bin/bash
+burak@ubuntu:~$ docker run --user=burakteke -w=/home/burakteke -v /home/burak/burak_docker:/home/burakteke -p 8888:8888 --rm --interactive --tty --runtime=nvidia tekeburak/deeplearning:latest /bin/bash
 ```
 ## Run docker container for jupyter notebook and link folders
 ```console
