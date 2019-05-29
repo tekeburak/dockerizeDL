@@ -4,41 +4,41 @@
 
 # First install docker and nvidia-docker2
 ```console
-burak@docker:~$ chmod +x install.sh
-burak@docker:~$ ./install.sh
+burak@ubuntu:~$ chmod +x install.sh
+burak@ubuntu:~$ ./install.sh
 ```
 
 ## Build a Docker image for Ubuntu 18.04 (bionic) or 16.04 (xenial) from lambdal repository.
 ```console
-burak@docker:~$ sudo docker build -t lambda-stack -f Dockerfile.$(lsb_release -cs) git://github.com/lambdal/lambda-stack-dockerfiles.git
+burak@ubuntu:~$ sudo docker build -t lambda-stack -f Dockerfile.$(lsb_release -cs) git://github.com/lambdal/lambda-stack-dockerfiles.git
 ```
 ## List docker image. You should see lambda-stack and latest.
 ```console
-burak@docker:~$ sudo docker image list
+burak@ubuntu:~$ sudo docker image list
 ```
 
 ## Run a command in docker image
 ```console
-burak@docker:~$ sudo docker run --rm --interactive --tty --runtime=nvidia lambda-stack:latest /bin/bash
+burak@ubuntu:~$ sudo docker run --rm --interactive --tty --runtime=nvidia lambda-stack:latest /bin/bash
 ```
 
 ## Upload the docker image to a container registry
 ```console
-burak@docker:~$ sudo docker login
-burak@docker:~$ sudo docker tag lambda-stack myusername/reponame:tagname
-burak@docker:~$ sudo docker push myusername/reponame:tagname
+burak@ubuntu:~$ sudo docker login
+burak@ubuntu:~$ sudo docker tag lambda-stack myusername/reponame:tagname
+burak@ubuntu:~$ sudo docker push myusername/reponame:tagname
 ```
 
 ## Run your Docker container without having to re-build the image
 ```console
-burak@docker:~$ sudo docker run --rm --interactive --tty myusername/reponame:tagname \
+burak@ubuntu:~$ sudo docker run --rm --interactive --tty myusername/reponame:tagname \
     /usr/bin/python3 -c \
     'import tensorflow as tf; s = tf.Session(); print("Mission completed!");'
 ```
 
 ## If you encounter a problem building a docker image, clean and build again
 ```console
-burak@docker:~$ docker system prune --all --force --volumes
+burak@ubuntu:~$ docker system prune --all --force --volumes
 ```
 
 ```
